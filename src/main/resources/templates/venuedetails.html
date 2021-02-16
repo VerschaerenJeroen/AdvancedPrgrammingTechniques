@@ -5,16 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>venuedetails</title>
-    <div th:replace="fragments/header :: header">Header</div>
-
-    <div class="row1">
-        <div class="row1content">
-            <h2><p th:text="${venueName}">venue</h2>
-        </div>
-        <div class="buttons"><a href="/">home</a></div>
-    </div>
 </head>
 <body>
+<div th:replace="fragments/header :: header">Header</div>
 
+<div class="row1">
+    <div class="row1content">
+        <h2><p th:text="${venueName}">venue</h2>
+    </div>
+    <div class="buttons"><a href="/">home</a></div>
+</div>
+<div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>

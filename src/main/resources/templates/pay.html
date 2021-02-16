@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Pay</title>
-    <div th:replace="fragments/header :: header">Header</div>
-
-    <h1>Datum</h1>
-    <p th:text="${dateNow}">dateNow</p>
-    <h1>BetaalDatum</h1>
-    <p th:text="${payDay}">payDay</p>
 </head>
 <body>
+<div th:replace="fragments/header :: header">Header</div>
 
+<h1>Datum</h1>
+<p th:text="${dateNow}">dateNow</p>
+<h1>BetaalDatum</h1>
+<p th:text="${payDay}">payDay</p>
+<div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>

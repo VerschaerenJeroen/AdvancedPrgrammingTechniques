@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>About Me</title>
-    <div th:replace="fragments/header :: header">Header</div>
-
-    <h1>About me</h1>
-    <p th:text="${mySpecialNumber}">mySpecialNumber</p>
-    <p>blablabla blablabla blablabla</p>
 </head>
 <body>
+<div th:replace="fragments/header :: header">Header</div>
 
+<h1>About me</h1>
+<p th:text="${mySpecialNumber}">mySpecialNumber</p>
+<p>blablabla blablabla blablabla</p>
+<div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>

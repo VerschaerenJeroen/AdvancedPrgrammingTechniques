@@ -1,19 +1,20 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
 <head>
     <meta charset="UTF-8">
     <title>venuelist</title>
-    <div th:replace="fragments/header :: header">Header</div>
-
-    <div class="row1">
-        <div class="buttons"><a href="/venuedetails/De Loods">De Loods</a></div>
-        <div class="buttons"><a href="/venuedetails/De Carré">De Carré</a></div>
-        <div class="buttons"><a href="/venuedetails/Sportpaleis">Sportpaleis</a></div>
-    </div>
 </head>
 <body>
+<div th:replace="fragments/header :: header">Header</div>
 
+<div class="row1">
+    <div class="buttons"><a href="/venuedetails/De Loods">De Loods</a></div>
+    <div class="buttons"><a href="/venuedetails/De Carré">De Carré</a></div>
+    <div class="buttons"><a href="/venuedetails/Sportpaleis">Sportpaleis</a></div>
+</div>
+
+<div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>

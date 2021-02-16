@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>home</title>
-    <div th:replace="fragments/header :: header">Header</div>
-
-    <p th:text="${mySpecialNumber}">mySpecialNumber</p>
-    <h1 th:text="${55+77}">app</h1>
 </head>
 <body>
+<div th:replace="fragments/header :: header">Header</div>
 
+<p th:text="${mySpecialNumber}">mySpecialNumber</p>
+<h1 th:text="${55+77}">app</h1>
+<div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>
