@@ -5,11 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pay</title>
-    <nav>
-        <a th:href="@{/}">Home</a>
-        <a th:href="@{/venuelist}">Venuelist</a>
-        <a th:href="@{/about}">About</a>
-    </nav>
+    <div th:replace="fragments/header :: header">Header</div>
+
     <h1>Datum</h1>
     <p th:text="${dateNow}">dateNow</p>
     <h1>BetaalDatum</h1>

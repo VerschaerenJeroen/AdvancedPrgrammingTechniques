@@ -5,11 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>venuelist</title>
-    <nav>
-        <a th:href="@{/}">Home</a>
-        <a th:href="@{/venuelist}">Venuelist</a>
-        <a th:href="@{/about}">About</a>
-    </nav>
+    <div th:replace="fragments/header :: header">Header</div>
+
     <div class="row1">
         <div class="buttons"><a href="/venuedetails/De Loods">De Loods</a></div>
         <div class="buttons"><a href="/venuedetails/De Carré">De Carré</a></div>
