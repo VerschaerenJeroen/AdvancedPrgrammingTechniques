@@ -5,7 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <title>About Me</title>
-    <a th:href="@{/}">Home</a>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/venuelist}">Venuelist</a>
+        <a th:href="@{/about}">About</a>
+    </nav>
     <h1>About me</h1>
     <p th:text="${mySpecialNumber}">mySpecialNumber</p>
     <p>blablabla blablabla blablabla</p>
