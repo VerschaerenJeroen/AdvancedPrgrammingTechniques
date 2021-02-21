@@ -9,10 +9,21 @@
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 
-<h1>Datum</h1>
-<p th:text="${dateNow}">dateNow</p>
-<h1>BetaalDatum</h1>
-<p th:text="${payDay}">payDay</p>
+<div class="freespaceforheader"></div>
+<div class="row1">
+    <div class="row1content">
+        <p th:if="${dayToday == 'Sun' || dayToday == 'Sat'}">
+            Prettig weekend, je hebt het verdiend!</p>
+        <p th:unless="${dayToday == 'Sun' || dayToday == 'Sat'}">
+            Voor je het weet is het weekend!</p>
+
+        <h2>Datum</h2>
+        <p th:text="${dateNow}">dateNow</p>
+        <h2>BetaalDatum</h2>
+        <p th:text="${payDay}">payDay</p>
+    </div>
+</div>
+
 <div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>

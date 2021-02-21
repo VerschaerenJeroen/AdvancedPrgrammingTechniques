@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* general styles for html elements */
+
+body {
+    background-color: #4E4E50;
+    color: #C3073F;
+    font-family: Bahnschrift, sans-serif;
+    margin: 0;
+}
+
+
+h1 {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 4em;
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 2em;
+}
+
+hr {
+    border-color: #950740;
+    width: 70%;
+    margin: 5px auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* general layout shared by all pages */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: #1A1A1D;
+    color: #C3073F;
+    height: 150px;
+}
+
+.freespaceforheader {
+    margin: 150px 0 20px 0;
+}
+
+/*navigation buttons in header*/
+.navbuttons {
+    display: flex;
+}
+
+.bottom {
+    background-color: #1A1A1D;
+    color: #C3073F;
+    height: 30px;
+    font-size: 0.7em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.bottom p {
+    text-align: center;
+}
+
+.row1 {
+    display: flex;
+    position: relative;
+    margin: 20px 0;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    background-color: #1A1A1D;
+    padding: 30px;
+    margin: 0 30px;
+}
+
+.row1 img {
+    width: 100%;
+    height: auto;
+}
+
+.hello {
+    position: absolute;
+    right: 0;
+    top: 90px;
+    margin: 0 10px;
+}
+
+.row1content {
+    flex-grow: 4;
+    margin: 0 50px;
+}
+
+.cols2 {
+    position: relative;
+}
+
+/* links that look like buttons */
+
+/* links that do or don't look like buttons */
+.buttonLook {
+    background-color: #1A1A1D;
+    border: 2px solid #950740;
+    color: #C3073F;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.buttonLook:hover {
+    background-color: #950740;
+    color: #1A1A1D;
+}
+
+.buttonLook:active {
+    background-color: #1A1A1D;
+    color: #950740;
+}
+
+a.mediumButton {
+    display: block;
+    margin: 10px auto;
+    width: 400px;
+    font-size: 1.2em;
+    padding: 1em;
+}
+
+a.smallButton {
+    display: block;
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+a.menuButton {
+    display: block;
+    margin: 0 10px;
+    width: 6em;
+    padding: 0.2em;
+}
+
+/* list page only */
+.venuelist {
+    float: left;
+}
+
+/* details page only */
+
+.prevButtonDiv {
+    position: fixed;
+    left: 10px;
+    top: 160px;
+}
+
+.nextButtonDiv {
+    position: fixed;
+    right: 10px;
+    top: 160px;
+}
+
+/* home page only */
+
+.row2 {
+    background-color: #989572;
+    color: #EDC7CF;
+    height: 400px;
+    padding: 60px 0;
+}
+
+.row3 {
+    background-color: #C6AE82;
+    height: 300px;
+    padding: 60px 0;
+    text-align: center;
+}
+
+
+.error {
+    color: red;
+    font-size: larger;
+}
+
+.fieldError, input.fieldError {
+    background-color: red;
+}

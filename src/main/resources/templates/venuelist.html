@@ -8,13 +8,21 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">Header</div>
-
+<div class="freespaceforheader"></div>
 <div class="row1">
-    <div class="buttons"><a href="/venuedetails/De Loods">De Loods</a></div>
-    <div class="buttons"><a href="/venuedetails/De Carré">De Carré</a></div>
-    <div class="buttons"><a href="/venuedetails/Sportpaleis">Sportpaleis</a></div>
+    <div class="row1content">
+        <h2>venues</h2>
+        <div class="cols2">
+            <div class="venuelist">
+                <div th:each="venueName: ${venueNames}">
+                    <a class="buttonLook mediumButton" th:href="@{|venuedetails/${venueNameStat.index}|}"
+                       th:text="|${venueName}|">venuename
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 <div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>
