@@ -47,15 +47,14 @@ public class HomeController {
         return "venuelist";
     }
 
-    @GetMapping({"/venuedetails", "venuedetails/{pathVariable}"})
-    public String venueDetails(Model model, @PathVariable(required = false) Integer pathVariable) {
-        if (pathVariable == null) {
-            pathVariable = -1;
+    @GetMapping({"/venuedetails", "/venuedetails/{index}"})
+    public String venueDetails(Model model,
+                               @PathVariable(required = false)  Integer index) {
+        if (index!=null && index>=0 && index<venueNames.length ) {
+            model.addAttribute("venueName", venueNames[index]);
+            model.addAttribute("prevIndex", index>0 ? index-1 : venueNames.length-1);
+            model.addAttribute("nextIndex", index<venueNames.length-1 ? index+1 : 0);
         }
-        if (pathVariable < venueNames.length && pathVariable >= 0) {
-            model.addAttribute("venueNames", venueNames[pathVariable]);
-        }
-
         return "venuedetails";
     }
 }
