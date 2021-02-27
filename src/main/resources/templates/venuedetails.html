@@ -12,55 +12,19 @@
 <div class="freespaceforheader"></div>
 <div class="row1">
     <div class="row1content">
-    <div th:if="${venueNames} == 'De Loods'">
+        <h2 th:text="${venueName}">venuedetails</h2>
+
+        <div class="venueinfo"></div>
+
         <div class="prevButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/5|}">Prev</a>
+            <a class="buttonLook smallButton" th:href="@{|/venuedetails/${prevIndex}|}">&lt;</a>
         </div>
         <div class="nextButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/1|}">Next</a>
+            <a class="buttonLook smallButton" th:href="@{|/venuedetails/${nextIndex}|}">&gt;</a>
         </div>
     </div>
-    <div th:if="${venueNames} == 'De Club'">
-        <div class="prevButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/0|}">Prev</a>
-        </div>
-        <div class="nextButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/2|}">Next</a>
-        </div>
-    </div>
-    <div th:if="${venueNames} == 'De Hangar'">
-        <div class="prevButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/1|}">Prev</a>
-        </div>
-        <div class="nextButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/3|}">Next</a>
-        </div>
-    </div>
-    <div th:if="${venueNames} == 'Zapoi'">
-        <div class="prevButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/2|}">Prev</a>
-        </div>
-        <div class="nextButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/4|}">Next</a>
-        </div>
-    </div>
-    <div th:if="${venueNames} == 'Kuub'">
-        <div class="prevButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/3|}">Prev</a>
-        </div>
-        <div class="nextButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/5|}">Next</a>
-        </div>
-    </div>
-    <div th:if="${venueNames} == 'Cuba Libre'">
-        <div class="prevButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/4|}">Prev</a>
-        </div>
-        <div class="nextButtonDiv">
-            <a class="buttonLook smallButton" th:href="@{|/venuedetails/0|}">Next</a>
-        </div>
-    </div>
-        <h2 th:unless="${venueNames}">no venue was chosen</h2>
+    <div class="row1content" th:unless="${venueName}">
+        <p>no venue was chosen</p>
     </div>
 </div>
 <div th:replace="fragments/footer :: footer">Footer</div>
