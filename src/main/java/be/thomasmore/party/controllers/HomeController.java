@@ -1,5 +1,6 @@
 package be.thomasmore.party.controllers;
 
+import be.thomasmore.party.model.Venue;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,10 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 @Controller
 public class HomeController {
-    private final String[] venueNames = {"De Loods", "De Club", "De Hangar", "Zapoi", "Kuub", "Cuba Libre"};
+    private final Venue[] venue = {};
 
     private final String dayToday = LocalDate.now().format(DateTimeFormatter.ofPattern("E"));
 
@@ -43,17 +45,17 @@ public class HomeController {
 
     @GetMapping("/venuelist")
     public String venuelist(Model model) {
-        model.addAttribute("venueNames", venueNames);
+        model.addAttribute("venue", venue);
         return "venuelist";
     }
 
     @GetMapping({"/venuedetails", "/venuedetails/{index}"})
     public String venueDetails(Model model,
                                @PathVariable(required = false)  Integer index) {
-        if (index!=null && index>=0 && index<venueNames.length ) {
-            model.addAttribute("venueName", venueNames[index]);
-            model.addAttribute("prevIndex", index>0 ? index-1 : venueNames.length-1);
-            model.addAttribute("nextIndex", index<venueNames.length-1 ? index+1 : 0);
+        if (index!=null && index>=0 && index<venue.length ) {
+            model.addAttribute("venue", venue[index]);
+            model.addAttribute("prevIndex", index>0 ? index-1 : venue.length-1);
+            model.addAttribute("nextIndex", index<venue.length-1 ? index+1 : 0);
         }
         return "venuedetails";
     }

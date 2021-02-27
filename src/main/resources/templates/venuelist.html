@@ -14,10 +14,10 @@
         <h2>venues</h2>
         <div class="cols2">
             <div class="venuelist">
-                <div th:each="venueName: ${venueNames}">
+                <div th:each="venue: ${venue}">
                     <a class="buttonLook mediumButton"
-                       th:href="@{|/venuedetails/${venueNameStat.index}|}"
-                       th:text="${venueName}">venue name</a>
+                       th:href="@{|/venuedetails/${venueStat.index}|}"
+                       th:text="${venue.getVenueName()}">venue name</a>
                 </div>
             </div>
         </div>
