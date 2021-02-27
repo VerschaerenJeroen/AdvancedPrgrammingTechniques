@@ -24,6 +24,10 @@ h2 {
     font-size: 2em;
 }
 
+p {
+    padding: 10px 50px;
+}
+
 hr {
     border-color: #950740;
     width: 70%;
@@ -49,6 +53,10 @@ a {
 
 .freespaceforheader {
     margin: 150px 0 20px 0;
+}
+
+.Space {
+    margin: 20px auto;
 }
 
 /*navigation buttons in header*/
@@ -104,6 +112,36 @@ a {
     position: relative;
 }
 
+.filters {
+    margin: 15px 50px 0 0;
+    float: left;
+    width: 35%;
+}
+
+.onefilter {
+    display: flex;
+    margin: 2px 0;
+}
+
+.onefilter input {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+
+.onefilter input[type="text" i] {
+    width: 15em;
+}
+
+.onefilter input[type="number" i] {
+    width: 5em;
+}
+
+.filtername {
+    width: 4em;
+    text-align: right;
+}
+
 /* links that look like buttons */
 
 /* links that do or don't look like buttons */
@@ -145,6 +183,68 @@ a.menuButton {
     margin: 0 10px;
     width: 6em;
     padding: 0.2em;
+}
+
+.authButton {
+    float: right;
+    margin-left: auto;
+}
+
+.filterButton {
+    margin: 20px 0;
+    padding: .5em;
+    border: none;
+    font-size: medium;
+}
+
+a.activeFilter {
+    background-color: #950740;
+    color: #1A1A1D;
+}
+
+.editButton {
+    font-size: 1.2em;
+    margin: 0 0.6em 0 0;
+    padding: 1.2em;
+    background-color: #1A1A1D;
+    color: #C3073F;
+    border-width: 0;
+    width: 5em;
+    display: inline-block;
+}
+
+.going {
+    float: right;
+    width: 10em;
+}
+
+.going input {
+    border: none;
+    float: right;
+    font-size: 1.2em;
+    margin: 0 10px 0 0;
+}
+
+.going div {
+    font-size: 1.2em;
+    padding: 0.2em 0.2em;
+    float: right;
+    background-color: #1A1A1D;
+    color: #C3073F;
+    width: 10em;
+    margin: 10px 10px 0 0;
+    text-align: right;
+}
+
+
+a.linkLook {
+    background-color: transparent;
+    color: #C3073F;
+}
+
+a.linkLook:hover {
+    background-color: transparent;
+    color: #1A1A1D;
 }
 
 /* list page only */

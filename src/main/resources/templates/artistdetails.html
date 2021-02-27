@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>ArtistDetails</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="freespaceforheader"></div>
+
+<div class="row1">
+    <div class="row1content">
+
+        <div class="venueinfo"></div>
+
+        <div class="prevButtonDiv">
+            <a class="buttonLook smallButton" th:href="@{|/artistdetails/${prevIndex}|}">&lt;</a>
+        </div>
+        <div class="nextButtonDiv">
+            <a class="buttonLook smallButton" th:href="@{|/artistdetails/${nextIndex}|}">&gt;</a>
+        </div>
+        <h2 th:text="${artist.getArtistName()}">artistname</h2>
+        <div class="venueinfo">
+            <div class="infoLine">
+                <div class="infoLineName">info:</div>
+                <div class="infoLineValue">
+                    <a th:href="${artist.getLinkMoreInfo()}" th:text="${artist.getLinkMoreInfo()}" class="linkLook" target="_blank">linkmoreinfo</a>
+                </div>
+            </div>
+            <div class="infoLine">
+                <div class="infoLineName">genre:</div>
+                <div class="infoLineValue" th:text="${artist.getGenre()}">genre</div>
+            </div>
+            <div class="infoLine">
+                <div class="infoLineName">portfolio:</div>
+                <div class="infoLineValue" th:href="${artist.getPortfolio()}" th:text="${artist.getPortfolio()}">portfolio</div>
+            </div>
+            <div class="infoLine">
+                <div class="infoLineName">bio:</div>
+                <div class="infoLineValue" th:text="${artist.getBio()}">artist bio</div>
+            </div>
+        </div>
+    </div>
+    <div class="row1content" th:unless="${artist}">
+        <p>no artist was chosen</p>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer">Footer</div>
+</body>
+</html>

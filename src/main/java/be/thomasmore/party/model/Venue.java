@@ -10,10 +10,10 @@ public class Venue {
     private String venueName;
     private String linkMoreInfo;
     private int capacity;
-    private boolean FoodProvided;
-    private boolean Indoor;
-    private boolean Outdoor;
-    private boolean FreeParkingAvailable;
+    private boolean foodProvided;
+    private boolean indoor;
+    private boolean outdoor;
+    private boolean freeParkingAvailable;
     private String city;
     private int distanceFromPublicTransportInKm;
 
@@ -22,10 +22,10 @@ public class Venue {
         this.venueName = venueName;
         this.linkMoreInfo = linkMoreInfo;
         this.capacity = capacity;
-        this.FoodProvided = FoodProvided;
-        this.Indoor = Indoor;
-        this.Outdoor = Outdoor;
-        this.FreeParkingAvailable = FreeParkingAvailable;
+        this.foodProvided = FoodProvided;
+        this.indoor = Indoor;
+        this.outdoor = Outdoor;
+        this.freeParkingAvailable = FreeParkingAvailable;
         this.city = city;
         this.distanceFromPublicTransportInKm = distanceFromPublicTransportInKm;
     }
@@ -66,35 +66,35 @@ public class Venue {
     }
 
     public boolean isFoodProvided() {
-        return FoodProvided;
+        return foodProvided;
     }
 
     public void setFoodProvided(boolean foodProvided) {
-        FoodProvided = foodProvided;
+        this.foodProvided = foodProvided;
     }
 
     public boolean isIndoor() {
-        return Indoor;
+        return indoor;
     }
 
     public void setIndoor(boolean indoor) {
-        Indoor = indoor;
+        this.indoor = indoor;
     }
 
     public boolean isOutdoor() {
-        return Outdoor;
+        return outdoor;
     }
 
     public void setOutdoor(boolean outdoor) {
-        Outdoor = outdoor;
+        this.outdoor = outdoor;
     }
 
     public boolean isFreeParkingAvailable() {
-        return FreeParkingAvailable;
+        return freeParkingAvailable;
     }
 
     public void setFreeParkingAvailable(boolean freeParkingAvailable) {
-        FreeParkingAvailable = freeParkingAvailable;
+        this.freeParkingAvailable = freeParkingAvailable;
     }
 
     public String getCity() {
