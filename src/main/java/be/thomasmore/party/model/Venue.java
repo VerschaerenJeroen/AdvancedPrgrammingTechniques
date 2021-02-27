@@ -30,6 +30,9 @@ public class Venue {
         this.distanceFromPublicTransportInKm = distanceFromPublicTransportInKm;
     }
 
+    public Venue() {
+    }
+
     public int getId() {
         return id;
     }

@@ -14,9 +14,9 @@
         <h2>venues</h2>
         <div class="cols2">
             <div class="venuelist">
-                <div th:each="venue: ${venue}">
+                <div th:each="venue: ${venues}">
                     <a class="buttonLook mediumButton"
-                       th:href="@{|/venuedetails/${venueStat.index}|}"
+                       th:href="@{|/venuedetails/${venue.getId}|}"
                        th:text="${venue.getVenueName()}">venue name</a>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 package be.thomasmore.party.controllers;
 
 import be.thomasmore.party.model.Venue;
+import be.thomasmore.party.repositories.VenueRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +13,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @Controller
 public class HomeController {
-    private final Venue[] venue = {};
+    @Autowired
+    private VenueRepository venueRepository;
 
     private final String dayToday = LocalDate.now().format(DateTimeFormatter.ofPattern("E"));
 
@@ -45,17 +49,18 @@ public class HomeController {
 
     @GetMapping("/venuelist")
     public String venuelist(Model model) {
-        model.addAttribute("venue", venue);
+        Iterable<Venue> venues = venueRepository.findAll();
+        model.addAttribute("venues", venues);
         return "venuelist";
     }
 
-    @GetMapping({"/venuedetails", "/venuedetails/{index}"})
+    @GetMapping({"/venuedetails", "/venuedetails/{id}"})
     public String venueDetails(Model model,
-                               @PathVariable(required = false)  Integer index) {
-        if (index!=null && index>=0 && index<venue.length ) {
-            model.addAttribute("venue", venue[index]);
-            model.addAttribute("prevIndex", index>0 ? index-1 : venue.length-1);
-            model.addAttribute("nextIndex", index<venue.length-1 ? index+1 : 0);
+                               @PathVariable(required = false)  Integer id) {
+        if (id!=null && venueRepository.findById(id).isPresent() ) {
+            model.addAttribute("venue", venueRepository.findById(id).get());
+            model.addAttribute("prevIndex", id>1 ? id-1 : venueRepository.count());
+            model.addAttribute("nextIndex", id<venueRepository.count() ? id+1 : 1);
         }
         return "venuedetails";
     }
