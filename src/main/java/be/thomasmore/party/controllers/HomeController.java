@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 @Controller
 public class HomeController {
-    //testtest
+    //test
     @Autowired
     private VenueRepository venueRepository;
     @Autowired
