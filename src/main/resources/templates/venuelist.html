@@ -25,8 +25,10 @@
             <div class="venuelist">
                 <div th:each="venue: ${venues}">
                     <a class="buttonLook mediumButton"
-                       th:href="@{/venuedetails/{venues}(venues=${venue.getId()})}"
-                       th:text="${venue.getVenueName()}">venue name</a>
+                       th:href="@{/venuedetails/{venues}(venues=${venue.getId()})}">
+                        <span th:text="|${venue.getVenueName()}|">venue name</span>
+                        <div th:text="|capacity ${venue.getCapacity()}|">capacity</div>
+                    </a>
                 </div>
             </div>
         </div>
