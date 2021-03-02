@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -46,11 +47,18 @@ public class VenueController {
     public String venueListWithFilter(Model model,
                                       @RequestParam(required = false) Integer minCapacity) {
         logger.info(String.format("venueListWithFilter -- min=%d", minCapacity));
-        Iterable<Venue> venues = venueRepository.findAll();
+        Iterable<Venue> venues;
+        if (minCapacity == null) {
+            venues = venueRepository.findAll();
+        }
+        else {
+            venues = venueRepository.findByCapacityGreaterThan(minCapacity);
+        }
         long nrOfVenues = venueRepository.count();
         model.addAttribute("venues",venues);
         model.addAttribute("showFilters", true);
         model.addAttribute("nrOfVenues",nrOfVenues);
+        model.addAttribute("Capacity", minCapacity);
         return "venuelist";
     }
 }
