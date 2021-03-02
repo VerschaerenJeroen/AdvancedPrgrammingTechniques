@@ -14,24 +14,13 @@
 <div class="row1">
     <div class="row1content">
         <h2>venues</h2>
-        <div class="filters">
-            <div class="Space"> Outdoor:
-                <a class="buttonLook filterButton" th:classappend="${yo} ? activeFilter" th:href="@{/venuelist/outdoor/yes}"> yes</a>
-                <a class="buttonLook filterButton" th:classappend="${no} ? activeFilter" th:href="@{/venuelist/outdoor/no}"> no</a>
-                <a class="buttonLook filterButton" th:classappend="${all} ? activeFilter" th:href="@{/venuelist/outdoor/all}"> all</a>
+        <div th:text="|${nrOfVenues}  venues found|">venue count</div>
+            <div th:if="${showFilters}" class="filters">
+                <a th:href="@{/venuelist}" class="buttonLook filterButton">-</a>
             </div>
-            <div class="Space"> Indoor:
-                <a class="buttonLook filterButton" th:classappend="${yi} ? activeFilter" th:href="@{/venuelist/indoor/yes}"> yes</a>
-                <a class="buttonLook filterButton" th:classappend="${ni} ? activeFilter" th:href="@{/venuelist/indoor/no}"> no</a>
-                <a class="buttonLook filterButton" th:classappend="${all} ? activeFilter" th:href="@{/venuelist/indoor/all}"> all</a>
+            <div th:unless="${showFilters}" class="filters">
+                <a th:href="@{/venuelist/filter}" class="buttonLook filterButton">Filter</a>
             </div>
-            <div class="Space"> Size:
-                <a class="buttonLook filterButton" th:classappend="${small} ? activeFilter" th:href="@{/venuelist/capacity/s}"> S</a>
-                <a class="buttonLook filterButton" th:classappend="${medium} ? activeFilter" th:href="@{/venuelist/capacity/m}"> M</a>
-                <a class="buttonLook filterButton" th:classappend="${large} ? activeFilter" th:href="@{/venuelist/capacity/l}"> L</a>
-                <a class="buttonLook filterButton" th:classappend="${all} ? activeFilter" th:href="@{/venuelist/capacity/all}"> all</a>
-            </div>
-        </div>
         <div class="cols2">
             <div class="venuelist">
                 <div th:each="venue: ${venues}">
