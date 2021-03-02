@@ -52,7 +52,7 @@ public class VenueController {
             venues = venueRepository.findAll();
         }
         else {
-            venues = venueRepository.findByCapacityGreaterThan(minCapacity);
+            venues = venueRepository.findByCapacityGreaterThanEqual(minCapacity);
         }
         long nrOfVenues = venueRepository.count();
         model.addAttribute("venues",venues);
