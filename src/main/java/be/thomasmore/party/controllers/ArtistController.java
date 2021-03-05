@@ -1,21 +1,38 @@
 package be.thomasmore.party.controllers;
 
 import be.thomasmore.party.model.Artist;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ArtistController {
+    private Logger logger = LoggerFactory.getLogger(ArtistController.class);
+
     @Autowired
-    private be.thomasmore.party.repository.ArtistRepository artistRepository;
+    private be.thomasmore.party.repositories.ArtistRepository artistRepository;
 
     @GetMapping({"/artistlist"})
-    public String artistList(Model model) {
-        Iterable<Artist> artists = artistRepository.findAll();
+    public String artistList(Model model,
+                             @RequestParam(required = false) String keyword) {
+        logger.info(String.format("artistList -- keyword=%s", keyword));
+
+        Iterable<Artist> artists;
+
+        if (keyword.equals("")) {
+            artists = artistRepository.findAll();
+        }
+        else {
+            artists = artistRepository.findArtistsByArtistNameContainingIgnoreCase(keyword);
+        }
+
         model.addAttribute("artists", artists);
+        model.addAttribute("keyword", keyword);
         return "artistlist";
     }
 

@@ -14,6 +14,13 @@
     <div class="row1content">
         <div class="cols2">
             <h2>artists</h2>
+            <form>
+                <div class="onefilter">
+                    <label for="keyword" class="filtername">keyword</label>
+                    <input type="text" id="keyword" name="keyword" value="" th:value="${keyword}">
+                    <input type="submit" value="filter">
+                </div>
+            </form>
             <div th:each="artist: ${artists}">
                 <a class="buttonLook mediumButton"
                    th:href="@{/artistdetails/{artists}(artists=${artist.getId()})}"

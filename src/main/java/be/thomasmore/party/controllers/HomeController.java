@@ -3,7 +3,7 @@ package be.thomasmore.party.controllers;
 import be.thomasmore.party.model.Artist;
 import be.thomasmore.party.model.Venue;
 import be.thomasmore.party.repositories.VenueRepository;
-import be.thomasmore.party.repository.ArtistRepository;
+import be.thomasmore.party.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
