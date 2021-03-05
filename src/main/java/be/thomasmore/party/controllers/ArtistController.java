@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class ArtistController {
     private Logger logger = LoggerFactory.getLogger(ArtistController.class);
@@ -22,14 +24,10 @@ public class ArtistController {
                              @RequestParam(required = false) String keyword) {
         logger.info(String.format("artistList -- keyword=%s", keyword));
 
-        Iterable<Artist> artists;
+        List<Artist> artists;
 
-        if (keyword.equals("")) {
-            artists = artistRepository.findAll();
-        }
-        else {
-            artists = artistRepository.findArtistsByArtistNameContainingIgnoreCase(keyword);
-        }
+        artists = artistRepository.findArtistsByArtistNameContainingQuery(keyword);
+
 
         model.addAttribute("artists", artists);
         model.addAttribute("keyword", keyword);

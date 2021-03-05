@@ -45,7 +45,8 @@ public class VenueController {
     }
     @GetMapping({"/venuelist/filter"})
     public String venueListWithFilter(Model model,
-                                      @RequestParam(required = false) Integer minCapacity, Integer maxCapacity) {
+                                      @RequestParam(required = false) Integer minCapacity,
+                                      @RequestParam(required = false) Integer maxCapacity) {
 
         logger.info(String.format("venueListWithFilter -- min=%d", minCapacity));
         logger.info(String.format("venueListWithFilter -- max=%d", maxCapacity));
