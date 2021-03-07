@@ -1,6 +1,7 @@
 package be.thomasmore.party.controllers;
 
 import be.thomasmore.party.model.Artist;
+import be.thomasmore.party.repositories.ArtistRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class ArtistController {
     private Logger logger = LoggerFactory.getLogger(ArtistController.class);
 
     @Autowired
-    private be.thomasmore.party.repositories.ArtistRepository artistRepository;
+    private ArtistRepository artistRepository;
 
     @GetMapping({"/artistlist"})
     public String artistList(Model model,
