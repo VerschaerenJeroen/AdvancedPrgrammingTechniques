@@ -51,13 +51,16 @@ public class VenueController {
     @GetMapping({"/venuedetails", "/venuedetails/{id}"})
     public String venueDetails(Model model,
                                @PathVariable(required = false)  Integer id) {
+        if (id == null) return "venuedetails";
+
         Optional<Venue> v = venueRepository.findById(id);
-        long nrOfVenues = venueRepository.count();
-        if (id!=null && v.isPresent() )
+        if (v.isPresent()) {
+            long nrOfVenues = venueRepository.count();
             model.addAttribute("venue", v.get());
-            model.addAttribute("prevIndex", id>1 ? id-1 : nrOfVenues);
+            model.addAttribute("prevIndex", id > 1 ? id - 1 : nrOfVenues);
             model.addAttribute("nextIndex", id < nrOfVenues ? id + 1 : 1);
             model.addAttribute("showFilter", false);
+        }
         return "venuedetails";
     }
     @GetMapping({"/venuelist/filter"})
