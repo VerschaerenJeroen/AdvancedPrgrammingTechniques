@@ -19,21 +19,8 @@ public class VenueController {
     private Logger logger = LoggerFactory.getLogger(VenueController.class);
 
 
-    public Boolean function(String string){
-        if (string != null) {
-            if (string.equals("yes")) {
-                return true;
-            }
-            else if (string.equals("no")) {
-                return false;
-            }
-            else {
-                return null;
-            }
-        }
-        else {
-            return null;
-        }
+    private Boolean function(String string){
+        return (string == null || string.equals("all")) ? null : string.equals("yes");
     }
 
     @Autowired
@@ -72,12 +59,8 @@ public class VenueController {
                                       @RequestParam(required = false) String filterIndoor,
                                       @RequestParam(required = false) String filterOutdoor) {
 
-        logger.info(String.format("venueListWithFilter -- min=%d", minCapacity));
-        logger.info(String.format("venueListWithFilter -- max=%d", maxCapacity));
-        logger.info(String.format("venueListWithFilter -- max=%d",distanceToPublicTransport));
-        logger.info(String.format("venueListWithFilter -- food=%s", filterFood));
-        logger.info(String.format("venueListWithFilter -- indoor=%s", filterIndoor));
-        logger.info(String.format("venueListWithFilter -- outdoor=%s", filterOutdoor));
+        logger.info(String.format("venueListWithFilter -- min=%d, max=%d, distance=%d, filterFood=%s, filterIndoor=%s, , filterOutdoor=%s",
+                minCapacity, maxCapacity, distanceToPublicTransport, filterFood, filterIndoor, filterIndoor));
 
         List<Venue> venues = venueRepository.findByCapacityBetweenQuery(minCapacity,maxCapacity,distanceToPublicTransport,function(filterFood),function(filterIndoor),function(filterOutdoor));
 
