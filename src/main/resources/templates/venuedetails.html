@@ -10,8 +10,9 @@
 <div th:replace="fragments/header :: header">Header</div>
 
 <div class="freespaceforheader"></div>
+
 <div class="row1">
-    <div class="row1content">
+    <div class="row1content" th:if="${venue}">
 
         <div class="venueinfo"></div>
 
@@ -64,6 +65,18 @@
     </div>
     <div class="row1content" th:unless="${venue}">
         <p>no venue was chosen</p>
+    </div>
+</div>
+<div class="row1">
+    <div class="row1content">
+        <h2 th:text="${'parties in ' + venue.getVenueName()}"></h2>
+        <div class="venuelist">
+            <div th:each="party: ${parties}">
+                <a class="buttonLook mediumButton" th:href="@{/partydetails/{party}(party=${party.getId()})}">
+                    <span th:text="|${party.getName()}|">Party name</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 <div th:replace="fragments/footer :: footer">Footer</div>

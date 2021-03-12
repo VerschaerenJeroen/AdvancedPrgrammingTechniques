@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+<head>
+    <meta charset="UTF-8">
+    <title>PartyList</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+
+<div class="freespaceforheader"></div>
+
+<div class="row1">
+    <div class="row1content">
+        <h2>parties</h2>
+        <div class="filters">
+        </div>
+        <div class="cols2">
+            <div class="venuelist">
+                <div th:each="party: ${parties}">
+                    <a class="buttonLook mediumButton"
+                       th:href="@{/partydetails/{parties}(parties=${party.getId()})}">
+                        <span th:text="|${party.getName()}|">party name</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer">Footer</div>
+</body>
+</html>

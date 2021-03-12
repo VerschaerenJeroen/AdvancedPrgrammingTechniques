@@ -1,6 +1,8 @@
 package be.thomasmore.party.controllers;
 
+import be.thomasmore.party.model.Party;
 import be.thomasmore.party.model.Venue;
+import be.thomasmore.party.repositories.PartyRepository;
 import be.thomasmore.party.repositories.VenueRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,9 @@ public class VenueController {
     @Autowired
     private VenueRepository venueRepository;
 
+    @Autowired
+    private PartyRepository partyRepository;
+
     @GetMapping("/venuelist")
     public String venuelist(Model model) {
         Iterable<Venue> venues = venueRepository.findAll();
@@ -43,10 +48,12 @@ public class VenueController {
         Optional<Venue> v = venueRepository.findById(id);
         if (v.isPresent()) {
             long nrOfVenues = venueRepository.count();
+            List<Party> parties = partyRepository.findPartyByVenue(v.get());
             model.addAttribute("venue", v.get());
             model.addAttribute("prevIndex", id > 1 ? id - 1 : nrOfVenues);
             model.addAttribute("nextIndex", id < nrOfVenues ? id + 1 : 1);
             model.addAttribute("showFilter", false);
+            model.addAttribute("parties", parties);
         }
         return "venuedetails";
     }

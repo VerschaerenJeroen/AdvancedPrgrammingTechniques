@@ -1,6 +1,7 @@
 package be.thomasmore.party.model;
 
 
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class Party {
     private Date date;
     @Temporal(TemporalType.TIME)
     private Date doors;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;
 
     public int getId() {
