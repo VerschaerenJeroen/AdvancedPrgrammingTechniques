@@ -1,14 +1,9 @@
 package be.thomasmore.party.controllers;
 
-import be.thomasmore.party.model.Artist;
-import be.thomasmore.party.model.Venue;
-import be.thomasmore.party.repositories.VenueRepository;
-import be.thomasmore.party.repositories.ArtistRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,12 +22,12 @@ public class HomeController {
     String dateTimeString2 = payDay.format(formatter);
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home() {
         return "home";
     }
 
     @GetMapping("/about")
-    public String about(Model model) {
+    public String about() {
         return "about";
     }
 

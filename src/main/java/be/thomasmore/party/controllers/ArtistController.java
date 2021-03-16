@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ArtistController {
@@ -38,10 +39,14 @@ public class ArtistController {
     @GetMapping({"/artistdetails", "/artistdetails/{id}"})
     public String artistDetails(Model model,
                                 @PathVariable(required = false)  Integer id) {
-        if (id!=null && artistRepository.findById(id).isPresent() )
-            model.addAttribute("artist", artistRepository.findById(id).get());
-            model.addAttribute("prevIndex", id>1 ? id - 1 : artistRepository.count());
-            model.addAttribute("nextIndex", id<artistRepository.count() ? id + 1 : 1);
+        if (id == null) return "artistdetails";
+
+        Optional<Artist> a = artistRepository.findById(id);
+        if (a.isPresent()) {
+            model.addAttribute("artist", a.get());
+            model.addAttribute("prevIndex", id > 1 ? id - 1 : artistRepository.count());
+            model.addAttribute("nextIndex", id < artistRepository.count() ? id + 1 : 1);
+        }
         return "artistdetails";
     }
 }
