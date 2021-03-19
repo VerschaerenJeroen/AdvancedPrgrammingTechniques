@@ -47,6 +47,19 @@
     </div>
 </div>
 
+<div class="row1">
+    <div class="row1content">
+        <h2 th:text="'parties by ' + ${artist.getArtistName()}"></h2>
+        <div class="venuelist">
+            <div th:each="party:${artist.getParties()}">
+                <a class="buttonLook mediumButton" th:href="@{|/partydetails/${party.id}|}">
+                    <span th:text="${party.getName()}">party name </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:replace="fragments/footer :: footer">Footer</div>
 </body>
 </html>

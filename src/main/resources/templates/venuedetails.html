@@ -67,7 +67,7 @@
         <p>no venue was chosen</p>
     </div>
 </div>
-<div class="row1">
+<div th:unless="${parties.isEmpty()}" class="row1">
     <div class="row1content">
         <h2 th:text="${'parties in ' + venue.getVenueName()}"></h2>
         <div class="venuelist">

@@ -3,6 +3,7 @@ package be.thomasmore.party.model;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -19,6 +20,10 @@ public class Party {
     private Date doors;
     @ManyToOne(fetch = FetchType.LAZY)
     private Venue venue;
+    @ManyToMany
+    Collection<Artist> artists;
+    @ManyToMany
+    Collection<Animal> animals;
 
     public int getId() {
         return id;
@@ -82,5 +87,21 @@ public class Party {
 
     public void setVenue(Venue venue) {
         this.venue = venue;
+    }
+
+    public Collection<Artist> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Collection<Artist> artists) {
+        this.artists = artists;
+    }
+
+    public Collection<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Collection<Animal> animals) {
+        this.animals = animals;
     }
 }

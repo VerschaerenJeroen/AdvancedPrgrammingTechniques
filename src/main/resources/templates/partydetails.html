@@ -53,6 +53,34 @@
         <p>no party was chosen</p>
     </div>
 </div>
+
+<div th:unless="${party.getArtists().isEmpty()}" class="row1">
+    <div class="row1content">
+        <h2>line up:</h2>
+        <div class="venuelist">
+            <div th:each="artist: ${party.getArtists()}">
+                <a class="buttonLook mediumButton" th:href="@{|/artistdetails/${artist.id}|}">
+                    <span th:text="${artist.getArtistName()}">Artist name</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:unless="${party.getAnimals().isEmpty()}" class="row1">
+    <div class="row1content">
+        <h2>Who goes?</h2>
+        <div class="venuelist">
+            <div th:each="animal: ${party.getAnimals()}">
+                <a class="buttonLook mediumButton" th:href="@{|/animaldetails/${animal.id}|}">
+                    <span th:text="${animal.getName()}">Animal name</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:replace="fragments/footer :: footer">Footer</div>
+
 </body>
 </html>

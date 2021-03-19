@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -26,10 +25,13 @@ public class ArtistController {
                              @RequestParam(required = false) String keyword) {
         logger.info(String.format("artistList -- keyword=%s", keyword));
 
-        List<Artist> artists;
-
-        artists = artistRepository.findArtistsByArtistNameContainingQuery(keyword);
-
+        Iterable<Artist> artists;
+        if (keyword != null) {
+            artists = artistRepository.findArtistsByArtistNameContainingQuery(keyword);
+        }
+        else {
+            artists = artistRepository.findAll();
+        }
 
         model.addAttribute("artists", artists);
         model.addAttribute("keyword", keyword);
