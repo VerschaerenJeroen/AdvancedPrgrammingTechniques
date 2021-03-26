@@ -1,0 +1,63 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+<head>
+    <meta charset="UTF-8">
+    <title>partynew</title>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">Header</div>
+<div class="freespaceforheader"></div>
+<div class="row1">
+    <div class="row1content">
+        <h2>New party</h2>
+        <form th:action="@{|/admin/partynew|}" method="post" th:object="${party}">
+            <div class="infoLine">
+                <label for="partyName" class="infoLineName">name: </label>
+                <input id="partyName" class="infoLineValue" th:field="*{name}" type="text">
+            </div>
+            <div class="infoLine">
+                <label for="venue" class="infoLineName">venue: </label>
+                <select id="venue" name="venueId" class="infoLineValue">
+                    <option th:each="venue : ${venues}" th:value="${venue.getId()}" th:text="${venue.getVenueName()}" ></option>
+                </select>
+            </div>
+            <div class="infoLine">
+                <label for="date" class="infoLineName">date <i>(dd/mm/yyyy)</i>: </label>
+                <input type="text" id="date" class="infoLineValue" th:field="*{date}">
+            </div>
+            <div class="infoLine">
+                Free Party!
+            </div>
+            <div class="infoLine">
+                <label for="pricePresaleInEur" class="infoLineName">price (presale) </label>
+                <input id="pricePresaleInEur" class="infoLineValue" th:field="*{pricePresaleInEur}" type="text">
+                &nbsp;€
+            </div>
+            <div class="infoLine">
+                <label for="priceInEur" class="infoLineName">price (presale) </label>
+                <input id="priceInEur" class="infoLineValue" th:field="*{priceInEur}" type="text">
+                &nbsp;€
+            </div>
+            <div class="infoLine">
+                <label for="extraInfo" class="infoLineName">extra info:</label>
+                <textarea id="extraInfo" cols="25" class="infoLineValue" th:field="*{extraInfo}"> </textarea>
+            </div>
+            <div class="infoLine">
+                <label for="doors" class="infoLineName">doors <i>(HH:mm)</i>: </label>
+                <input id="doors" class="infoLineValue" th:field="*{doors}">
+            </div>
+            <div class="infoLine">
+                <a th:href="@{|/partylist|}" class="buttonLook editButton">cancel</a>
+                <input type="submit" value="create" class="buttonLook editButton">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer">Footer</div>
+
+</body>
+</html>

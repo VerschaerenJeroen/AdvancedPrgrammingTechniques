@@ -1,0 +1,66 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <title>Let's Party!</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="freespaceforheader"></div>
+<div class="row1">
+    <div class="row1content" th:if="${party}" th:object="${party}">
+        <h2 th:text="${party.getName()}">partydetails</h2>
+        <h3>
+            <span th:text="${party.getDate() + ' in '}">Date</span>
+            <a th:href="@{/venuedetails/{venues}(venues=${party.getVenue().getId()})}" class="linkLook" th:text="${party.getVenue().getVenueName()}"></a>
+        </h3>
+        <form th:action="@{|/admin/partyedit/${party.getId()}|}" method="post">
+            <div class="venueinfo">
+                <div class="infoLine">
+                    <label for="partyName" class="infoLineName">name: </label>
+                    <input id="partyName" class="infoLineValue" th:field="*{name}" type="text">
+                </div>
+                <div class="infoLine">
+                    <label for="venue" class="infoLineName">venue: </label>
+                    <select id="venue" name="venueId" class="infoLineValue">
+                        <option th:each="venue : ${venues}" th:value="${venue.getId()}" th:text="${venue.getVenueName()}" th:selected="${venue.getId() == party.venue.getId()}"></option>
+                    </select>
+                </div>
+                <div class="infoLine">
+                    <label for="date" class="infoLineName">date <i>(dd/mm/yyyy)</i>: </label>
+                    <input type="text" id="date" class="infoLineValue" th:field="*{date}">
+                </div>
+                <div class="infoLine">
+                    Free Party!
+                </div>
+                <div class="infoLine">
+                    <label for="pricePresaleInEur" class="infoLineName">price (presale) </label>
+                    <input id="pricePresaleInEur" class="infoLineValue" th:field="*{pricePresaleInEur}" type="text">
+                    &nbsp;€
+                </div>
+                <div class="infoLine">
+                    <label for="priceInEur" class="infoLineName">price (presale) </label>
+                    <input id="priceInEur" class="infoLineValue" th:field="*{priceInEur}" type="text">
+                    &nbsp;€
+                </div>
+                <div class="infoLine">
+                    <label for="extraInfo" class="infoLineName">extra info:</label>
+                    <textarea id="extraInfo" cols="25" class="infoLineValue" th:field="*{extraInfo}"> </textarea>
+                </div>
+                <div class="infoLine">
+                    <label for="doors" class="infoLineName">doors <i>(HH:mm)</i>: </label>
+                    <input id="doors" class="infoLineValue" th:field="*{doors}">
+                </div>
+                <div class="infoLine">
+                    <a th:href="@{|/partydetails/${party.getId()}}" class="buttonLook editButton" href="">cancel</a>
+                    <input type="submit" value="save" class="buttonLook editButton">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer">Footer</div>
+</body>
+</html>

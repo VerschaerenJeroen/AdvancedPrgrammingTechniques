@@ -21,6 +21,9 @@
         <div class="nextButtonDiv">
             <a class="buttonLook smallButton" th:href="@{|/partydetails/${nextIndex}|}">&gt;</a>
         </div>
+        <div class="editButtonDiv">
+            <a class="buttonLook smallButton" th:href="@{|/admin/partyedit/${party.getId()}|}">edit</a>
+        </div>
 
         <h2 th:text="${party.getName()}">partydetails</h2>
         <h3>
@@ -41,7 +44,7 @@
             </div>
             <div class="infoLine">
                 <div class="infoLineName">doors:</div>
-                <div class="InfoLineValue" th:text="${party.getDoors()}"></div>
+                <div class="InfoLineValue" th:text="${#dates.format(party.doors, 'HH:mm')}"></div>
             </div>
             <div th:unless="${party.getExtraInfo().isBlank() || party.getExtraInfo().isEmpty()}" class="infoLine">
                 <div class="infoLineName">extrainfo:</div>
